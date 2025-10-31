@@ -38,21 +38,11 @@ No GPU required.
 
 ## ⚙️ Dependencies
 
-Dependencies are tracked with [uv](https://docs.astral.sh/uv/). The lockfile contains the exact versions for:
-
-- OpenCV  
-- MediaPipe  
-- Flask & Werkzeug  
-- python-socketio  
-- NumPy  
-- Uvicorn (serves the web front-end)
-
-Install uv if needed:
+Install the required packages as follows:
 
 ```
-curl -LsSf https://astral.sh/uv/install.sh | sh
+pip install opencv-python mediapipe flask python-socketio Werkzeug numpy
 ```
-Check the official docs for platform-specific instructions if the script is unsuitable.
 
 ---
 
@@ -67,24 +57,12 @@ cd Gestura
 
 ### 2️⃣ Install dependencies
 ```
-uv sync
+pip install opencv-python mediapipe flask python-socketio Werkzeug numpy
 ```
 
-Installs everything into `.venv` based on `pyproject.toml` / `uv.lock`.
-
-### 3️⃣ Activate the virtual environment
+### 3️⃣ Start the hand tracking server
 ```
-source .venv/bin/activate
-```
-
-On Windows (PowerShell):
-```
-.venv\Scripts\Activate.ps1
-```
-
-### 4️⃣ Start the hand tracking server
-```
-uv run detector.py
+python3 detector.py
 ```
 
 - Opens your webcam and begins hand tracking  
@@ -107,13 +85,16 @@ On Windows, use the built-in **Camera app** to determine which device number to 
 
 ---
 
-### 5️⃣ Launch the web front-end
-Open another terminal (activate the virtual environment there as well) and run:
+### 4️⃣ Run the game in your browser
+Open another terminal and run:
 ```
-uv run server.py
+python3 -m http.server 8000
 ```
 
-Then visit `http://127.0.0.1:8000` in your browser.
+Then visit:
+```
+http://127.0.0.1:8000
+```
 
 **Behavior:**
 - Starts in **DEMO MODE** (ship moves automatically)  
@@ -123,7 +104,7 @@ Then visit `http://127.0.0.1:8000` in your browser.
 
 ---
 
-### 6️⃣ Stop the program
+### 5️⃣ Stop the program
 - Press `Ctrl + C` in both terminals  
 - Close the browser tab  
 
@@ -148,9 +129,9 @@ Session duration: **30 seconds**
 ```
 .
 ├── detector.py          # Hand tracking server (MediaPipe + Socket.IO)
-├── index.html           # HTML entry point
-├── sketch.js            # Main game logic (p5.js)
-└── server.py            # Flask-on-uvicorn wrapper for static assets
+└── GAME/
+    ├── index.html       # HTML entry point
+    └── sketch.js        # Main game logic (p5.js)
 ```
 
 ---

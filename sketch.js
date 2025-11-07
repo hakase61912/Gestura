@@ -23,7 +23,7 @@ function setup() {
   textFont("Agave");
 
   player.x = width / 2;
-  player.y = height - 120;
+  player.y = height - 50;
 
   setupSocket();
   console.log("✅ p5.js initialized.");
@@ -107,7 +107,7 @@ function drawDemo() {
 
   updateEnemies();
   checkCollision();
-}
+}d
 
 // === ゲームプレイ ===
 function drawGame() {

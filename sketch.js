@@ -74,6 +74,8 @@ function drawDemo() {
   textSize(60);
   textAlign(CENTER, CENTER);
   text("DEMO MODE", width / 2, height / 2 - 100);
+  textSize(40);
+  text("プレイするには手を数秒間かざしてください", width / 2, height / 2 - 10);
 
   // --- プレイヤー挙動 ---
   if (frameCount % int(random(90, 150)) === 0) {
